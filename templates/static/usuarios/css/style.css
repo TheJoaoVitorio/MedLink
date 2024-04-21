@@ -1,0 +1,24 @@
+.navbar-brand{
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bg-login{
+    font-size:38px;
+    font-weight: 500;
+    color:white;
+
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+.body-login{
+    height:100vh;
+}
+.bg-login-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

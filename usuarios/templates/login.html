@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Login - MedLink{% endblock %}
+
+{% block 'head' %} 
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}"> 
+{% endblock %}
+
+{% block 'body' %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md d-flex justify-content-center body-login">
+                         <!-- Name lá da url  -->
+            <form action=" {% url 'login' %} "  method="POST">
+                {% csrf_token %}
+                <br>
+                <h1 class="fs-1 text-center mt-4">Login</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                        <section class="alert {{message.tags}}">
+                            {{message}}
+                        </section>
+                    {% endfor%}
+                {% endif %}
+
+                <br>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" placeholder="Digite seu nome">
+                  </div>
+                
+                <div class="mb-3">
+                  <label for="InputPassword" class="form-label">Senha</label>
+                  <input name="senha" type="password" class="form-control" id="InputPassword" placeholder="Digite sua senha">
+                </div>
+                 
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <a href="{% url 'cadastro' %} " class="btn btn-outline-dark">Não possui uma conta?</a>
+              </form>
+        </div>
+        <div class="col-md bg-dark d-flex justify-content-center align-items-center body-login">
+            <div class="bg-login">
+                <div class="bg-login-content">
+                    <img width="300px" src="{% static 'usuarios/img/imgLOGIN.png' %} ">
+                    <h1 class="text-center">MedLink</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
