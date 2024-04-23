@@ -42,8 +42,10 @@
         <div class="col-md bg-dark d-flex justify-content-center align-items-center body-login">
             <div class="bg-login">
                 <div class="bg-login-content">
-                    <img width="300px" src="{% static 'usuarios/img/imgLOGIN.png' %} ">
-                    <h1 class="text-center">MedLink</h1>
+                    <a href="{% url 'landing_page' %}">
+                        <img width="300px" src="{% static 'usuarios/img/imgLOGIN.png' %} ">
+                        <h1 class="text-center">MedLink</h1>
+                    </a>
                 </div>
             </div>
         </div>

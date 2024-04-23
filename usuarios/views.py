@@ -6,6 +6,9 @@ from django.contrib.messages import constants
 from django.contrib import messages
 
 # Create your views here.
+def landing_page(request):
+    return render (request,'landing_page.html')
+
 
 def cadastro(request):
 
