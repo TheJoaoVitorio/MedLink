@@ -2,8 +2,10 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.messages import constants
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def landing_page(request):
@@ -14,6 +16,7 @@ def cadastro(request):
 
     if request.method == 'GET':
         return render(request,'cadastro.html')
+
     elif request.method == 'POST':
 
         username = request.POST.get('username')
@@ -25,6 +28,7 @@ def cadastro(request):
             #o messages tem 3parametros , o request , tipo de msg e o texto da mensagem
             messages.add_message(request,constants.ERROR ,"Senha e o confirmar senha devem ser iguais")
             return redirect('/usuarios/cadastro')
+
         if len(password) < 6:
             messages.add_message(request,constants.ERROR ,"A Senha deve ter mais de 6 digitos")
             return redirect('/usuarios/cadastro')
@@ -32,6 +36,7 @@ def cadastro(request):
                             #o primeiro parametro e do BD e o outro é do valor da request username
                         #filtro para pegar os valores(do BD) que sejam iguais a da request
         users = User.objects.filter(username = username)
+
             #vai retornar um valor boolean
         if users.exists():
             messages.add_message(request,constants.ERROR ,"Já exite um usuário com esse username")
@@ -56,7 +61,7 @@ def login(request):
         #se for True 
         if user:
             auth.login(request,user)
-            return redirect ('pacientes/home')
+            return redirect ('/pacientes/home') #erro
 
         messages.add_message(request,constants.ERROR ,"Usuário ou senha inválidos")
         return redirect('/usuarios/login')

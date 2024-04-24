@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Home - MedLink{% endblock %}
+
+{% block 'head' %}
+
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{%block 'body'%}
+    {%block 'header'%}
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    <i class="fa-solid fa-house-medical"></i>MedLink
+                </a>
+                <div class="right-navbar d-flex gap-4">
+                    <a href=" {% url 'cadastro_medico' %} ">
+                        <button class="btn btn-primary" type="submit">Sou Médico</button>
+                    </a>
+                    <a class="navbar-brand" href=" {% url 'logout' %} ">
+                        <i class="fa-solid fa-door-open"></i>
+                    </a>
+                </div>
+            </div>    
+        </nav> 
+    {%endblock%}
+    
+    <div class="container">
+        <div class="title-home mt-4">
+            <h3>Seja bem vindo a MedLink, <span> {{request.user}} </span></h3>
+        </div>
+
+    </div>
+    
+    
+
+    
+{%endblock%}

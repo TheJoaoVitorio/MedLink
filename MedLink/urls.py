@@ -19,7 +19,8 @@ from django.urls import path,include  #include inclui outras urls dentro de uma 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/',include('usuarios.urls')), #dentro desse path tem outras urls, como a de cadastro/
-    path('medico/',include('medico.urls')),
-    path('',include('usuarios.urls')),
+    path('usuarios/', include('usuarios.urls')), #dentro desse path tem outras urls, como a de cadastro/
+    path('medico/', include('medico.urls')),
+    path('', include('usuarios.urls')),
+    path('pacientes/', include('pacientes.urls')),
 ]
