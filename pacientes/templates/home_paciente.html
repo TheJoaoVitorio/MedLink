@@ -38,7 +38,7 @@
             <h3>Seja bem vindo(a) a MedLink, <span class="text-primary fs-2"> {{request.user}} </span></h3>
         </div>
 
-        <form action="{% url 'home' %}" post="GET">
+        <form action="{% url 'home' %}" method="GET">
             <div class="input-group mb-3 mt-5 w-75">
                 <button class="btn btn-outline-secondary shadow-main-color" type="submit" id="button-addon1"> <i class="fa-solid fa-magnifying-glass"></i> </button>
                 <input name="medico" type="text" class="form-control shadow-main-color" placeholder="Busque por profissionais ..." aria-describedby="button-addon1">
