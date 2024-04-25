@@ -2,6 +2,7 @@
     display:flex;
     align-items: center;
     gap: 10px;
+    cursor:pointer;
 }
 
 .bg-login{
@@ -24,5 +25,28 @@
 }
 
 /* home */
+body{
+    background-color: #f0f0f0;
+}
 
+.form-control:focus {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    border-color: #ced4da; /* Pode ser necessário ajustar a cor da borda */
+}
 
+/* Card */
+.card-medico{
+    width: 45%;
+    background: white;
+    padding:16px;
+    border-radius: 6px;
+}
+.ft-perfil-card{
+    width: 90px;
+    height: 90px;
+    border-radius:45px;
+}
+.p-descricaoMedico{
+    overflow-y: auto;
+    height:120px;
+}

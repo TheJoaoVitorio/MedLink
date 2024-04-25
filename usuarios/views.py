@@ -61,7 +61,7 @@ def login(request):
         #se for True 
         if user:
             auth.login(request,user)
-            return redirect ('/pacientes/home') #erro
+            return redirect ('/pacientes/home')
 
         messages.add_message(request,constants.ERROR ,"Usuário ou senha inválidos")
         return redirect('/usuarios/login')

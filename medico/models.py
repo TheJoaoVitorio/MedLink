@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+def is_medico(user):
+    return DadosMedico.objects.filter(user=user).exists()
+
 
 class Especialidade(models.Model):
     especialidade = models.CharField(max_length=100)
