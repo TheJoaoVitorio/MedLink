@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Olá, Dr(a). {{ request.user }} {% endblock %}
+
+{% block 'head' %} 
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'medicos/css/cadastro_medicos.css' %}">
+    <link rel="stylesheet" href="{% static 'medicos/css/home_medico.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+
+{%block 'header'%}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="{% url 'home-medico' %}" class="navbar-brand">
+            <i class="fa-solid fa-house-medical"></i>MedLink
+        </a>
+        <div class="right-navbar d-flex gap-4">
+            <abbr title="Sair">
+                <a class="navbar-brand" href=" {% url 'logout' %} ">
+                    <i class="fa-solid fa-door-open"></i>
+                </a>
+            </abbr>
+        </div>
+    </div>    
+</nav> 
+{%endblock%}
+<div class="container">
+    <div class="title-home mt-4">
+        <h3>Olá Dr(a).<span class="text-primary fs-2"> {{ request.user}} </span>, Seja bem vindo(a) a MedLink.</h3>
+    </div>
+
+    <div class="section mt-4 d-flex gap-4 ">
+        <a href="  ">
+            <div class="card-abrir-consulta d-flex align-items-center justify-content-center flex-column ">
+                <i class="fa-solid fa-calendar-plus text-white fs-1 mb-2"></i>
+                <h1 class="text-white" >Abrir horários<br>para consultas.</h1>
+            </div>
+        </a>
+
+        <a href="  ">
+            <div class="card-abrir-consulta card-suas-consultas bg-warning d-flex align-items-center justify-content-center flex-column ">
+                <i class="fa-solid fa-calendar-days text-primary fs-1 mb-2 "></i>
+                <h1 class="text-primary fs-2 ">Suas consultas.</h1>
+            </div>
+        </a>
+
+    </div>
+
+    
+
+</div>
+
+
+{% endblock %}

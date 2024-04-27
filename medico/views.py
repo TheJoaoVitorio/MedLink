@@ -1,10 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.messages import constants
+from django.contrib.auth.decorators import login_required
 from .models import Especialidade
 from .models import DadosMedico
+from .models import is_medico
 
 # Create your views here.
+@login_required
 def cadastro_medico(request):
     
     DMedicos = DadosMedico.objects.filter(user = request.user)
@@ -49,3 +52,7 @@ def cadastro_medico(request):
         dados_medico.save()
         messages.add_message(request,constants.SUCCESS ,"Cadastro Médico realizado com sucesso!")
         return redirect('/medicos/abrir-horario') #ERRO 
+
+
+def HomeMedico(request):
+    return render (request,'home-medico.html',)

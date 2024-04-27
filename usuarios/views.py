@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
+from medico.models import DadosMedico , is_medico
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.messages import constants
 from django.contrib import messages
@@ -58,13 +59,20 @@ def login(request):
         password = request.POST.get('senha')
 
         user = auth.authenticate(request, username=username , password=password)
-        #se for True 
+        
         if user:
             auth.login(request,user)
-            return redirect ('/pacientes/home')
+            if is_medico(user):
+                return redirect('/medico/home')
+            else:
+                return redirect ('/pacientes/home')
 
         messages.add_message(request,constants.ERROR ,"Usuário ou senha inválidos")
         return redirect('/usuarios/login')
+
+
+
+       
 
 def logout(request):
     auth.logout(request)

@@ -29,3 +29,5 @@ class DadosMedico(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     especialidade = models.ForeignKey(Especialidade, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return self.nome

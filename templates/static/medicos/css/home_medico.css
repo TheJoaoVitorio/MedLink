@@ -1,0 +1,19 @@
+.section a{
+    text-decoration: none;
+}
+
+.card-abrir-consulta{
+    width: 300px;
+    height:150px;
+    padding:10px;
+    border-radius: 6px;
+    background-color: #0d6efd;
+    cursor: pointer;
+}
+.card-abrir-consulta h1{
+    font-size:26px;
+}
+
+.section .card-abrir-consulta:hover{
+    background: #1263dd;
+}
