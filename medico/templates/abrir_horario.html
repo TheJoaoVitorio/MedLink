@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}MedLink - Abrir Consultas{% endblock %}
+
+{% block 'head' %} 
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'medicos/css/cadastro_medicos.css' %}">
+    <link rel="stylesheet" href="{% static 'medicos/css/home_medico.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+
+{%block 'header'%}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="{% url 'home-medico' %}" class="navbar-brand">
+            <i class="fa-solid fa-house-medical"></i>MedLink
+        </a>
+        <div class="right-navbar d-flex gap-4">
+            <abbr title="Sair">
+                <a class="navbar-brand" href=" {% url 'logout' %} ">
+                    <i class="fa-solid fa-door-open"></i>
+                </a>
+            </abbr>
+        </div>
+    </div>    
+</nav> 
+{%endblock%}
+
+<div class="container">
+    <div class="title-home mt-4">
+        <h3>Dr(a).<span class="text-primary fs-2"> {{ request.user}} </span>, vamos abrir horários para suas consultas.</h3>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <section class="alert {{message.tags}}">
+                {{message}}
+            </section>
+        {% endfor%}
+    {% endif %}
+
+    <div class="main d-flex gap-4 mt-4 ">
+        <div class="form-control w-75 shadow-main-color">
+            <form action=" {% url 'abrir_horario' %} " method="POST" >
+                {% csrf_token %}
+                <label for="">Escolha a data:</label>
+                <div class="input-group mb-3 ">
+                    <input type="datetime-local" name="data" class="form-control">
+                </div>
+                <br>
+                <input type="submit" value="Salvar horário" class="btn btn-primary " >
+            </form>
+        </div>
+
+        <div class="Horarios form-control w-50 text-center shadow-main-color ">
+            <h1 class="fs-2">Seus Horários:</h1>
+            <ul class="list-group">
+                {% for data in datasAbertas%}
+                    <li> {{ data.data }} </li>
+                {% endfor%}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
