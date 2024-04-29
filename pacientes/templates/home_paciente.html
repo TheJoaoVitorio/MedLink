@@ -80,7 +80,7 @@
                                 Aguarde uma data
                             {%endif%}
                         </p>
-                        <a href="" class="btn btn-primary">Agendar</a>
+                        <a href="{% url 'escolher_horario' medico.id %}" class="btn btn-primary">Agendar</a>
                 </div>
                 {% endfor %}
             </div>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}Escolha seu horário - MedLink{% endblock %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'medicos/css/cadastro_medicos.css' %}">
+    <link rel="stylesheet" href="{% static 'geral/css/base.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock %}
+
+{%block 'body'%}
+    {%block 'header'%}
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    <i class="fa-solid fa-house-medical"></i>MedLink
+                </a>
+                <div class="right-navbar d-flex gap-4">
+                    <a href=" {% url 'cadastro_medico' %} ">
+                        <button class="btn btn-primary" type="submit">Sou Médico</button>
+                    </a>
+                    <abbr title="Sair">
+                        <a class="navbar-brand" href=" {% url 'logout' %} ">
+                            <i class="fa-solid fa-door-open"></i>
+                        </a>
+                    </abbr>
+                </div>
+            </div>    
+        </nav> 
+    {%endblock%}
+    
+    <div class="container">
+        <div class="title-home mt-4">
+            <h1 class="text-black text-center" >Escolher Horário</h1>
+        </div>
+
+       <div class="form-control w-50 p-4 card-escolher-horario d-flex gap-4 mt-3">
+            <img class="ft-perfil-card " src="{{medico.foto.url}}">
+            <div class="content-medico d-flex flex-column ">
+                <div class="d-flex gap-1 justify-content-center fs-4">
+                    <p>Dr(a). {{medico.nome}}</p>
+                    <i class="fa-solid fa-circle-check text-primary"></i>
+                </div>
+                <p><span class="p-bold" >Especialidade:</span> {{medico.especialidade}}</p>
+                <p><span class="p-bold">Endereço:</span> {{medico.bairro}}, {{medico.rua}}, nº {{medico.numero}} </p>
+            </div>
+       </div>
+
+       
+
+    </div>
+    
+
+    
+
+    
+{%endblock%}
