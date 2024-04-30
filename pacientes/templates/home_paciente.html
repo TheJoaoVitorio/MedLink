@@ -38,6 +38,14 @@
             <h3>Seja bem vindo(a) a MedLink, <span class="text-primary fs-2"> {{request.user}} </span></h3>
         </div>
 
+        {% if messages %}
+            {% for message in messages %}
+                <section class="alert {{message.tags}}">
+                    {{message}}
+                </section>
+            {% endfor%}
+        {% endif %}
+
         <form action="{% url 'home' %}" method="GET">
             <div class="input-group mb-3 mt-5 w-75">
                 <button class="btn btn-outline-secondary shadow-main-color" type="submit" id="button-addon1"> <i class="fa-solid fa-magnifying-glass"></i> </button>

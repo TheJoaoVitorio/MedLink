@@ -21,6 +21,7 @@ def cadastro_medico(request):
     if request.method == 'GET':
         especialidades = Especialidade.objects.all() 
         return render(request , 'cadastro_medico.html', {'especialidade': especialidades})
+        
     elif request.method == 'POST':
         crm = request.POST.get('crm')
         cim = request.FILES.get('cim')

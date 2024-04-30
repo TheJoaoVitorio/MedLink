@@ -36,6 +36,7 @@ class DadosMedico(models.Model):
     @property #esse metodo, torna-se um atributo da class DadosMedico
     def proxima_data(self):
         proxima_data = DatasAbertas.objects.filter(user=self.user).filter(data__gt=datetime.now()).filter(agendado=False).order_by('data').first()
+        return proxima_data
 
 class DatasAbertas(models.Model):
     data = models.DateTimeField()
@@ -43,4 +44,5 @@ class DatasAbertas(models.Model):
     agendado = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.data
+        return str(self.data)
+    
